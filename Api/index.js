@@ -23,7 +23,10 @@ app.get('/artists', (request, response) => {
 });
 
 app.get('/songs', db.getMusic);
+
 app.post('/songs', db.addMusic);
+
+app.delete('/songs/:id', db.deleteSongsbyId)
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

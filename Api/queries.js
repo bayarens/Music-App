@@ -34,7 +34,18 @@ const addMusic = (request, response) => {
     )
 }
 
+const deleteSongsbyId = (request, response) => {
+    const id = parseInt(request.params.id);
+    pool.query(`DELETE FROM songs WHERE id=${id}`, (error, resuslts) => {
+        if(error){
+            throw error
+        }
+        response.status(200).json(resuslts.rows)
+    })
+}
+
 module.exports = {
     getMusic: getMusic,
-    addMusic: addMusic
+    addMusic: addMusic,
+    deleteSongsbyId: deleteSongsbyId
 };
