@@ -26,7 +26,9 @@ app.get('/songs', db.getMusic);
 
 app.post('/songs', db.addMusic);
 
-app.delete('/songs/:id', db.deleteSongsbyId)
+app.delete('/songs/:id', db.deleteSongsById);
+
+app.put('/songs/:id', db.updateSongById);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

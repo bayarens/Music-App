@@ -34,7 +34,7 @@ const addMusic = (request, response) => {
     )
 }
 
-const deleteSongsbyId = (request, response) => {
+const deleteSongsById = (request, response) => {
     const id = parseInt(request.params.id);
     pool.query(`DELETE FROM songs WHERE id=${id}`, (error, resuslts) => {
         if(error){
@@ -44,8 +44,35 @@ const deleteSongsbyId = (request, response) => {
     })
 }
 
+const updateSongById = (request, response) => {
+    const id = parseInt(request.params.id);
+    const  keys = Object.keys(request.body);
+    const values = Object.values(request.body);
+
+
+    const configureString = () => {
+        let sqlStatement = "";
+        for(let i = 0; i < keys.length; i++){
+            if(i === keys.length-1) sqlStatement += `${keys[i]}=$${i+1}`
+            else sqlStatement += `${keys[i]}=$${i+1}, `
+        }
+        return sqlStatement
+    }
+
+
+
+
+    pool.query(`UPDATE songs SET ${configureString()} WHERE id=${id}`, values, (error, resuslts) => {
+        if(error){
+            throw error
+        }
+        response.status(200).json(resuslts.rows)
+    })
+}
+
 module.exports = {
-    getMusic: getMusic,
-    addMusic: addMusic,
-    deleteSongsbyId: deleteSongsbyId
+    getMusic,
+    addMusic,
+    deleteSongsById,
+    updateSongById
 };

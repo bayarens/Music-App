@@ -15,27 +15,34 @@ class AddSong extends React.Component{
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    onClick = () => {
-        addSong(this.state);
-        console.log(this.state)
+    onClick = async () => {
+        await addSong(this.state);
+        this.props.refresh()
+    }
+
+    componentDidUpdate= (prevProps) => {
+        if(this.props.editMode && !prevProps.editMode){
+            this.setState(this.props.editMode) 
+        }
     }
 
     render(){
+        console.log(this.props.editMode)
         return(
             <div className='add-song-wrap'>
-                <h1>Add Song</h1>
+                <h1>{this.props.editMode? "Edit Song": "Add Song"}</h1>
                 <label>Title: </label>
-                <input onChange={this.handleChange} name="title"></input>
+                <input onChange={this.handleChange} name="title" value={this.state.title}></input>
                 <label>Artist: </label>
-                <input onChange={this.handleChange} name="artist"></input>
+                <input onChange={this.handleChange} name="artist" value={this.state.artist}></input>
                 <label>Duration: </label>
-                <input onChange={this.handleChange} name="duration"></input>
+                <input onChange={this.handleChange} name="duration" value={this.state.duration}></input>
                 <label>Album: </label>
-                <input onChange={this.handleChange} name="album"></input>
+                <input onChange={this.handleChange} name="album" value={this.state.album}></input>
                 <label>Tracklist: </label>
-                <input onChange={this.handleChange} name="tracklist"></input>
+                <input onChange={this.handleChange} name="tracklist" value={this.state.tracklist}></input>
                 <label>Features: </label>
-                <input onChange={this.handleChange} name="features"></input>
+                <input onChange={this.handleChange} name="features" value={this.state.features}></input>
                 <button onClick={this.onClick}>Submit</button>
             </div>
         )

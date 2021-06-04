@@ -23,3 +23,13 @@ export const deleteSong = async (song) => {
     });
     return holdResponse;
 }
+
+export const updateSong = async (song) => {
+    const holdResponse = await fetch(`http://localhost:3030/songs/${song.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    return holdResponse;
+}
