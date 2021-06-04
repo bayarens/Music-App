@@ -11,15 +11,28 @@ class AddSong extends React.Component {
         features: ""
     }
 
+
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
 
     onClick = async () => {
         if (!this.props.editMode) {
+            this.setState({title: "",
+            artist: "",
+            duration: "",
+            album: "",
+            tracklist: "",
+            features: ""})
             await addSong(this.state);
         }
         else {
+            this.setState({title: "",
+            artist: "",
+            duration: "",
+            album: "",
+            tracklist: "",
+            features: ""})
             await updateSong(this.state);
             this.props.clearEdit()
         }
