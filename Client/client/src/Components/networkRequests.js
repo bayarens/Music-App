@@ -29,7 +29,9 @@ export const updateSong = async (song) => {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
-        }
+        },
+        body: JSON.stringify(song) 
     });
     return holdResponse;
 }
+

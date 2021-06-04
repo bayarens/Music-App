@@ -1,11 +1,15 @@
 import React from "react"
 import AddSongs from './AddSong'
-import { getAllSongs, deleteSong, updateSong } from './networkRequests'
+import { getAllSongs, deleteSong} from './networkRequests'
 
 class Home extends React.Component {
     state = {
         songs: [],
         editMode: null
+    }
+
+    clearEditMode= () => {
+        this.setState({ editMode:null }) 
     }
 
     componentDidMount() {
@@ -33,7 +37,7 @@ class Home extends React.Component {
                 <ul className="songList">
                     {this.state.songs.map(song => <li key={song.id}> {song.title} <button onClick={() => this.onClickD(song)}>🗑</button> <button onClick={() => this.onClickU(song)} >🔧</button> </li>)}
                 </ul>
-                <AddSongs editMode={this.state.editMode} refresh={this.refresh}/>
+                <AddSongs editMode={this.state.editMode} refresh={this.refresh} clearEdit={this.clearEditMode}/>
             </div>
         )
     }

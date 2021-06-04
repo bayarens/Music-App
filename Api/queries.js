@@ -48,8 +48,6 @@ const updateSongById = (request, response) => {
     const id = parseInt(request.params.id);
     const  keys = Object.keys(request.body);
     const values = Object.values(request.body);
-
-
     const configureString = () => {
         let sqlStatement = "";
         for(let i = 0; i < keys.length; i++){
@@ -58,9 +56,6 @@ const updateSongById = (request, response) => {
         }
         return sqlStatement
     }
-
-
-
 
     pool.query(`UPDATE songs SET ${configureString()} WHERE id=${id}`, values, (error, resuslts) => {
         if(error){
