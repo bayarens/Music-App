@@ -15,6 +15,21 @@
   gap: 10px;
   flex-direction: column;
   max-width: 500px;
+  background-color: cadetblue;
+}
+
+.playlist{
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+#songlistContainer{
+  background-color: cadetblue;
+}
+
+.playlist span{
+  width: 140px;
 }
 
 #mainContainer{
@@ -22,6 +37,7 @@
   width: 100%;
   justify-content: space-evenly;
 }
+
 .songList{
   display: flex;
   flex-direction: column;
@@ -37,4 +53,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+body{
+  background-color: burlywood;
 }

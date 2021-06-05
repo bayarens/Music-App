@@ -1,6 +1,6 @@
 import React from "react"
 import AddSongs from './AddSong'
-import { getAllSongs, deleteSong} from './networkRequests'
+import { getAllSongs, deleteSong } from './networkRequests'
 
 class Home extends React.Component {
     state = {
@@ -8,15 +8,15 @@ class Home extends React.Component {
         editMode: null
     }
 
-    clearEditMode= () => {
-        this.setState({ editMode:null }) 
+    clearEditMode = () => {
+        this.setState({ editMode: null })
     }
 
     componentDidMount() {
         this.refresh()
     }
 
-    refresh= () => {
+    refresh = () => {
         getAllSongs().then(results => {
             this.setState({ songs: results })
         })
@@ -28,16 +28,19 @@ class Home extends React.Component {
     }
 
     onClickU = (song) => {
-        this.setState({ editMode: song})
+        this.setState({ editMode: song })
     }
 
     render() {
         return (
             <div id='mainContainer'>
-                <ul className="songList">
-                    {this.state.songs.map(song => <li key={song.id}> {song.title} <button onClick={() => this.onClickD(song)}>🗑</button> <button onClick={() => this.onClickU(song)} >🔧</button> </li>)}
-                </ul>
-                <AddSongs editMode={this.state.editMode} refresh={this.refresh} clearEdit={this.clearEditMode}/>
+                <div id='songlistContainer'>
+                    <ul className="songList">
+                        <h2>The Playlist</h2>
+                        {this.state.songs.map(song => <li className='playlist' key={song.id}> <span>{song.title}</span> <button onClick={() => this.onClickD(song)}>🗑</button> <button onClick={() => this.onClickU(song)} >🔧</button> </li>)}
+                    </ul>
+                </div>
+                <AddSongs editMode={this.state.editMode} refresh={this.refresh} clearEdit={this.clearEditMode} />
             </div>
         )
     }
