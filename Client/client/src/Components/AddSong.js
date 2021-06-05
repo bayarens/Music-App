@@ -49,7 +49,7 @@ class AddSong extends React.Component {
         console.log(this.props.editMode)
         return (
             <div className='add-song-wrap'>
-                <h3>{this.props.editMode ? "Edit Song" : "Add Song"}</h3>
+                <h2 className='title'>{this.props.editMode ? "Edit Song" : "Add Song"}</h2>
                 <label>Title: </label>
                 <input onChange={this.handleChange} name="title" value={this.state.title}></input>
                 <label>Artist: </label>
@@ -63,7 +63,7 @@ class AddSong extends React.Component {
                 <label>Features: </label>
                 <input onChange={this.handleChange} name="features" value={this.state.features}></input>
 
-                <button onClick={this.onClick}>Submit</button>
+                <button className='Button' onClick={this.onClick}>Submit</button>
             </div>
         )
     }

@@ -33,14 +33,19 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div id='mainContainer'>
-                <div id='songlistContainer'>
-                    <ul className="songList">
-                        <h2>The Playlist</h2>
-                        {this.state.songs.map(song => <li className='playlist' key={song.id}> <span>{song.title}</span> <button onClick={() => this.onClickD(song)}>🗑</button> <button onClick={() => this.onClickU(song)} >🔧</button> </li>)}
-                    </ul>
+            <div className='mainContainerWrapper'>
+                <div>
+                    <h1 id='title'>The Playlist App</h1>
                 </div>
-                <AddSongs editMode={this.state.editMode} refresh={this.refresh} clearEdit={this.clearEditMode} />
+                <div id='mainContainer'>
+                    <div id='songlistContainer'>
+                        <h2 className='title'>The Playlist</h2>
+                        <ul className="songList">
+                            {this.state.songs.map(song => <li className='playlist' key={song.id}> <span>{song.title}</span> <button className='Button' onClick={() => this.onClickD(song)}>🗑</button> <button className='Button' onClick={() => this.onClickU(song)} >🔧</button> </li>)}
+                        </ul>
+                    </div>
+                    <AddSongs editMode={this.state.editMode} refresh={this.refresh} clearEdit={this.clearEditMode} />
+                </div>
             </div>
         )
     }

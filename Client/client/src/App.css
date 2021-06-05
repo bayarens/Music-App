@@ -5,11 +5,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .add-song-wrap {
   display: flex;
   gap: 10px;
@@ -18,14 +13,36 @@
   background-color: cadetblue;
 }
 
+.title{
+  text-shadow: 0 0 3px sienna;
+  color: aliceblue;
+}
+
+.add-song-wrap input, .add-song-wrap button{
+  margin: 0 80px;
+  border-radius: 50px;
+}
+
 .playlist{
   display: flex;
   flex-direction: row;
   margin: 5px;
 }
 
-#songlistContainer{
-  background-color: cadetblue;
+.add-song-wrap, #songlistContainer{
+  padding: 20px;
+  width: 400px;
+  box-shadow: 12px 12px 12px gray;
+  border: 2px solid darkolivegreen;
+  border-radius: 20%;
+  margin-top: 30px;
+  max-height: 550px;
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.Button{
+  cursor: pointer;
 }
 
 .playlist span{
@@ -38,11 +55,30 @@
   justify-content: space-evenly;
 }
 
+#title{
+  display: flex;
+  justify-content: center;
+}
+
+.mainContainerWrapper{
+  width: 100%;
+}
+
 .songList{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow: scroll;
+  position: relative;
+  max-height: 400px;
 }
+
+#songlistContainer{
+  background-color: cadetblue;
+  overflow: hidden;
+  position: relative;
+}
+
 
 .App-header {
   background-color: #282c34;
