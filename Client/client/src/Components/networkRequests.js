@@ -1,10 +1,10 @@
 export const getAllSongs = async () => {
-    const songs = await fetch("http://ec2-54-211-112-13.compute-1.amazonaws.com:3030/songs");
+    const songs = await fetch("https://d250e9tqt4cqqq.cloudfront.net/songs");
     return songs.json();
 }
 
 export const addSong = async (song) => {
-    const holdResponse = await fetch("http://ec2-54-211-112-13.compute-1.amazonaws.com:3030/songs", {
+    const holdResponse = await fetch("https://d250e9tqt4cqqq.cloudfront.net/songs", {
        method: "POST",
        headers: {
            "Content-Type": "application/json"
@@ -15,7 +15,7 @@ export const addSong = async (song) => {
 }
 
 export const deleteSong = async (song) => {
-    const holdResponse = await fetch(`http://ec2-54-211-112-13.compute-1.amazonaws.com:3030/songs/${song.id}`, {
+    const holdResponse = await fetch(`https://d250e9tqt4cqqq.cloudfront.net/songs/${song.id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -25,7 +25,7 @@ export const deleteSong = async (song) => {
 }
 
 export const updateSong = async (song) => {
-    const holdResponse = await fetch(`http://ec2-54-211-112-13.compute-1.amazonaws.com:3030/songs/${song.id}`, {
+    const holdResponse = await fetch(`https://d250e9tqt4cqqq.cloudfront.net/songs/${song.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
